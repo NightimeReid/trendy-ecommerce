@@ -3,10 +3,14 @@ import Stripe from 'stripe';
 import { STRIPE_SECRET_KEY } from '$env/static/private';
 import type { RequestHandler } from './$types';
 
-const stripe = new Stripe(STRIPE_SECRET_KEY);
+const stripe = STRIPE_SECRET_KEY ? new Stripe(STRIPE_SECRET_KEY) : null;
 
 export const POST: RequestHandler = async ({ request, url }) => {
 	try {
+		if (!stripe) {
+			throw new Error('Stripe Secret Key is not configured in .env');
+		}
+
 		const { items } = await request.json();
 		
 		const session = await stripe.checkout.sessions.create({

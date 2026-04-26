@@ -24,21 +24,23 @@
 	{:then products}
 		<div class="grid grid-cols-1 sm:grid-cols-2 lg:grid-cols-4 gap-8">
 			{#each products as product}
-				<Card.Root class="overflow-hidden border-2 transition-all hover:border-primary">
-					<div class="aspect-square relative overflow-hidden bg-muted">
-						<img 
-							src={product.image_url} 
-							alt={product.name}
-							class="object-cover w-full h-full transition-transform hover:scale-105"
-						/>
-					</div>
-					<Card.Header>
-						<Card.Title class="text-2xl font-bold">{product.name}</Card.Title>
-						<Card.Description class="text-lg">{product.category}</Card.Description>
-					</Card.Header>
-					<Card.Content>
-						<p class="text-3xl font-black text-primary">${product.price.toFixed(2)}</p>
-					</Card.Content>
+				<Card.Root class="overflow-hidden border-2 transition-all hover:border-primary group">
+					<a href="/product/{product.id}" class="block">
+						<div class="aspect-square relative overflow-hidden bg-muted">
+							<img 
+								src={product.image_url} 
+								alt={product.name}
+								class="object-cover w-full h-full transition-transform group-hover:scale-105"
+							/>
+						</div>
+						<Card.Header>
+							<Card.Title class="text-2xl font-bold group-hover:text-primary transition-colors">{product.name}</Card.Title>
+							<Card.Description class="text-lg">{product.category}</Card.Description>
+						</Card.Header>
+						<Card.Content>
+							<p class="text-3xl font-black text-primary">${product.price.toFixed(2)}</p>
+						</Card.Content>
+					</a>
 					<Card.Footer>
 						<Button 
 							class="w-full text-xl py-8 font-bold" 

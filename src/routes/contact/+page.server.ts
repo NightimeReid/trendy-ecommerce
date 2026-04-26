@@ -1,3 +1,4 @@
+import { supabase } from '$lib/supabase';
 import type { Actions } from './$types';
 
 export const actions = {
@@ -8,10 +9,14 @@ export const actions = {
 		const phone = data.get('phone');
 		const message = data.get('message');
 
-		// In a real app, you would save this to Supabase here
-		// e.g. await supabase.from('contact_messages').insert({ name, email, phone, message });
+		const { error } = await supabase
+			.from('contact_messages')
+			.insert({ name, email, phone, message });
 		
-		console.log('Contact form submission:', { name, email, phone, message });
+		if (error) {
+			console.error('Error saving contact message:', error);
+			return { success: false, error: 'Failed to send message.' };
+		}
 
 		return { success: true };
 	}
