@@ -9,14 +9,14 @@
 
 <svelte:head>
 	<link rel="icon" href={favicon} />
-	<title>TechTrendy E-Commerce</title>
+	<title>Fix It Tech | Trendy E-Commerce</title>
 </svelte:head>
 
 <div class="min-h-screen flex flex-col font-sans text-lg">
 	<header class="sticky top-0 z-50 w-full border-b bg-background/95 backdrop-blur supports-[backdrop-filter]:bg-background/60">
 		<div class="container flex h-20 items-center justify-between mx-auto px-4">
 			<a href="/" class="flex items-center space-x-2">
-				<span class="inline-block font-bold text-2xl tracking-tighter">TECHTRENDY</span>
+				<span class="inline-block font-black text-3xl tracking-tighter">FIX IT TECH</span>
 			</a>
 			<nav class="flex items-center space-x-8 text-xl font-medium">
 				<a href="/" class="transition-colors hover:text-foreground/80">Shop</a>
